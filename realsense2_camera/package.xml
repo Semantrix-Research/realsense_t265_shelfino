@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>realsense2_camera</name>
+  <name>realsense2_camera_t265</name>
   <version>4.51.1</version>
   <description>RealSense camera package allowing access to Intel T265 Tracking module and SR300 and D400 3D cameras</description>
   <maintainer email="librs.ros@intel.com">LibRealSense ROS Team</maintainer>
@@ -20,7 +20,7 @@
   <!-- <depend>librealsense2</depend> -->
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
-  <depend>realsense2_camera_msgs</depend>
+  <depend>realsense2_camera_msgs_t265</depend>
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>std_msgs</depend>

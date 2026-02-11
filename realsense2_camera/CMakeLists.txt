@@ -2,7 +2,7 @@
 # Copyright(c) 2022 Intel Corporation. All Rights Reserved.
 
 cmake_minimum_required(VERSION 3.5)
-project(realsense2_camera)
+project(realsense2_camera_t265)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -93,7 +93,7 @@ find_package(cv_bridge REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(rclcpp_components REQUIRED)
-find_package(realsense2_camera_msgs REQUIRED)
+find_package(realsense2_camera_msgs_t265 REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
@@ -196,7 +196,7 @@ set(dependencies
   image_transport
   rclcpp
   rclcpp_components
-  realsense2_camera_msgs
+  realsense2_camera_msgs_t265
   std_msgs
   sensor_msgs
   nav_msgs

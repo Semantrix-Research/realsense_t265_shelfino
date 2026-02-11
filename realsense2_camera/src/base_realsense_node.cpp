@@ -1142,7 +1142,7 @@ void BaseRealSenseNode::publishMetadata(rs2::frame f, const rclcpp::Time& header
         auto& md_publisher = _metadata_publishers.at(stream);
         if (0 != md_publisher->get_subscription_count())
         {
-            realsense2_camera_msgs::msg::Metadata msg;
+            realsense2_camera_msgs_t265::msg::Metadata msg;
             msg.header.frame_id = frame_id;
             msg.header.stamp = header_time;
             std::stringstream json_data;

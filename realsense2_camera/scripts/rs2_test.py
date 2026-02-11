@@ -304,7 +304,7 @@ def run_tests(tests):
             print 
             print ('*'*8 + ' Starting ROS ' + '*'*8)
             print ('running node (%d/%d)' % (run_no, num_of_startups))
-            cmd_params = ['ros2', 'launch', 'realsense2_camera', 'rs_launch.py'] + params_str.split(' ')
+            cmd_params = ['ros2', 'launch', 'realsense2_camera_t265', 'rs_launch.py'] + params_str.split(' ')
             print ('running command: ' + ' '.join(cmd_params))
             p_wrapper = subprocess.Popen(cmd_params, stdout=None, stderr=None)
             time.sleep(2)

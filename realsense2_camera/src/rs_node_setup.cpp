@@ -270,7 +270,7 @@ void BaseRealSenseNode::startPublishers(const std::vector<stream_profile>& profi
                                         rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(qos), qos));
         }
         std::string topic_metadata(stream_name + "/metadata");
-        _metadata_publishers[sip] = _node.create_publisher<realsense2_camera_msgs::msg::Metadata>(topic_metadata, 
+        _metadata_publishers[sip] = _node.create_publisher<realsense2_camera_msgs_t265::msg::Metadata>(topic_metadata, 
                                 rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(info_qos), info_qos));
         
         if (!((rs2::stream_profile)profile==(rs2::stream_profile)_base_profile))
@@ -279,7 +279,7 @@ void BaseRealSenseNode::startPublishers(const std::vector<stream_profile>& profi
             rmw_qos_profile_t extrinsics_qos = _use_intra_process ?  rmw_qos_profile_default : rmw_qos_profile_latched;
 
             std::string topic_extrinsics("extrinsics/" + create_graph_resource_name(ros_stream_to_string(_base_profile.stream_type()) + "_to_" + stream_name));
-            _extrinsics_publishers[sip] = _node.create_publisher<realsense2_camera_msgs::msg::Extrinsics>(topic_extrinsics, 
+            _extrinsics_publishers[sip] = _node.create_publisher<realsense2_camera_msgs_t265::msg::Extrinsics>(topic_extrinsics, 
                                     rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(extrinsics_qos), extrinsics_qos));
         }
     }
@@ -353,15 +353,15 @@ void BaseRealSenseNode::updateSensors()
 
 void BaseRealSenseNode::publishServices()
 {
-    _device_info_srv = _node.create_service<realsense2_camera_msgs::srv::DeviceInfo>(
+    _device_info_srv = _node.create_service<realsense2_camera_msgs_t265::srv::DeviceInfo>(
             "device_info",
-            [&](const realsense2_camera_msgs::srv::DeviceInfo::Request::SharedPtr req,
-                        realsense2_camera_msgs::srv::DeviceInfo::Response::SharedPtr res)
+            [&](const realsense2_camera_msgs_t265::srv::DeviceInfo::Request::SharedPtr req,
+                        realsense2_camera_msgs_t265::srv::DeviceInfo::Response::SharedPtr res)
                         {getDeviceInfo(req, res);});
 }
 
-void BaseRealSenseNode::getDeviceInfo(const realsense2_camera_msgs::srv::DeviceInfo::Request::SharedPtr,
-                                            realsense2_camera_msgs::srv::DeviceInfo::Response::SharedPtr res)
+void BaseRealSenseNode::getDeviceInfo(const realsense2_camera_msgs_t265::srv::DeviceInfo::Request::SharedPtr,
+                                            realsense2_camera_msgs_t265::srv::DeviceInfo::Response::SharedPtr res)
 {
     res->device_name = _dev.supports(RS2_CAMERA_INFO_NAME) ? create_graph_resource_name(_dev.get_info(RS2_CAMERA_INFO_NAME)) : "";
     res->serial_number = _dev.supports(RS2_CAMERA_INFO_SERIAL_NUMBER) ? _dev.get_info(RS2_CAMERA_INFO_SERIAL_NUMBER) : "";

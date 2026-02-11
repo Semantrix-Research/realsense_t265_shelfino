@@ -1,7 +1,7 @@
 # License: Apache 2.0. See LICENSE file in root directory.
 # Copyright(c) 2022 Intel Corporation. All Rights Reserved.
 
-"""Launch realsense2_camera node."""
+"""Launch realsense2_camera_t265 node."""
 import os
 from launch import LaunchDescription
 from ament_index_python.packages import get_package_share_directory
@@ -79,7 +79,7 @@ def generate_launch_description():
             # Realsense
             launch_ros.actions.Node(
                 condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " == ''"])),
-                package='realsense2_camera',
+                package='realsense2_camera_t265',
                 node_namespace=LaunchConfiguration("node_namespace"),
                 node_name=LaunchConfiguration("node_name"),
                 node_executable='realsense2_camera_node',
@@ -91,7 +91,7 @@ def generate_launch_description():
                 ),
             launch_ros.actions.Node(
                 condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " != ''"])),
-                package='realsense2_camera',
+                package='realsense2_camera_t265',
                 node_namespace=LaunchConfiguration("node_namespace"),
                 node_name=LaunchConfiguration("node_name"),
                 node_executable='realsense2_camera_node',
@@ -108,7 +108,7 @@ def generate_launch_description():
             # Realsense
             launch_ros.actions.Node(
                 condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " == ''"])),
-                package='realsense2_camera',
+                package='realsense2_camera_t265',
                 namespace=LaunchConfiguration("node_namespace"),
                 name=LaunchConfiguration("node_name"),
                 executable='realsense2_camera_node',
@@ -120,7 +120,7 @@ def generate_launch_description():
                 ),
             launch_ros.actions.Node(
                 condition=IfCondition(PythonExpression([LaunchConfiguration('config_file'), " != ''"])),
-                package='realsense2_camera',
+                package='realsense2_camera_t265',
                 namespace=LaunchConfiguration("node_namespace"),
                 name=LaunchConfiguration("node_name"),
                 executable='realsense2_camera_node',

@@ -10,10 +10,10 @@
 
 #include <diagnostic_updater/diagnostic_updater.hpp>
 #include <diagnostic_updater/publisher.hpp>
-#include "realsense2_camera_msgs/msg/imu_info.hpp"
-#include "realsense2_camera_msgs/msg/extrinsics.hpp"
-#include "realsense2_camera_msgs/msg/metadata.hpp"
-#include "realsense2_camera_msgs/srv/device_info.hpp"
+#include "realsense2_camera_msgs_t265/msg/imu_info.hpp"
+#include "realsense2_camera_msgs_t265/msg/extrinsics.hpp"
+#include "realsense2_camera_msgs_t265/msg/metadata.hpp"
+#include "realsense2_camera_msgs_t265/srv/device_info.hpp"
 #include <librealsense2/hpp/rs_processing.hpp>
 #include <librealsense2/rs_advanced_mode.hpp>
 
@@ -38,8 +38,8 @@
 #include <atomic>
 #include <thread>
 
-using realsense2_camera_msgs::msg::Extrinsics;
-using realsense2_camera_msgs::msg::IMUInfo;
+using realsense2_camera_msgs_t265::msg::Extrinsics;
+using realsense2_camera_msgs_t265::msg::IMUInfo;
 
 // #define FRAME_ID(sip) (static_cast<std::ostringstream&&>(std::ostringstream() << _camera_name << "_" << STREAM_NAME(sip) << "_frame")).str()
 // #define OPTICAL_FRAME_ID(sip) (static_cast<std::ostringstream&&>(std::ostringstream() << _camera_name << "_" << STREAM_NAME(sip) << "_optical_frame")).str()
@@ -139,14 +139,14 @@ namespace realsense2_camera
         std::string _camera_name;
         std::vector<rs2_option> _monitor_options;
         rclcpp::Logger _logger;
-        rclcpp::Service<realsense2_camera_msgs::srv::DeviceInfo>::SharedPtr _device_info_srv;
+        rclcpp::Service<realsense2_camera_msgs_t265::srv::DeviceInfo>::SharedPtr _device_info_srv;
         std::shared_ptr<Parameters> _parameters;
         std::list<std::string> _parameters_names;
 
         void publishExtrinsicsTopic(const stream_index_pair& sip, const rs2_extrinsics& ex);
         virtual void calcAndPublishStaticTransform(const rs2::stream_profile& profile, const rs2::stream_profile& base_profile);
-        void getDeviceInfo(const realsense2_camera_msgs::srv::DeviceInfo::Request::SharedPtr req,
-                                 realsense2_camera_msgs::srv::DeviceInfo::Response::SharedPtr res);
+        void getDeviceInfo(const realsense2_camera_msgs_t265::srv::DeviceInfo::Request::SharedPtr req,
+                                 realsense2_camera_msgs_t265::srv::DeviceInfo::Response::SharedPtr res);
         tf2::Quaternion rotationMatrixToQuaternion(const float rotation[9]) const;
         void publish_static_tf(const rclcpp::Time& t,
                                const float3& trans,
@@ -259,7 +259,7 @@ namespace realsense2_camera
         std::shared_ptr<SyncedImuPublisher> _synced_imu_publisher;
         std::map<unsigned int, int> _image_format;
         std::map<stream_index_pair, rclcpp::Publisher<sensor_msgs::msg::CameraInfo>::SharedPtr> _info_publisher;
-        std::map<stream_index_pair, rclcpp::Publisher<realsense2_camera_msgs::msg::Metadata>::SharedPtr> _metadata_publishers;
+        std::map<stream_index_pair, rclcpp::Publisher<realsense2_camera_msgs_t265::msg::Metadata>::SharedPtr> _metadata_publishers;
         std::map<stream_index_pair, rclcpp::Publisher<IMUInfo>::SharedPtr> _imu_info_publisher;
         std::map<stream_index_pair, rclcpp::Publisher<Extrinsics>::SharedPtr> _extrinsics_publishers;
         std::map<stream_index_pair, Extrinsics> _extrinsics_msgs;
